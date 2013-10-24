@@ -18,7 +18,8 @@ define([
     // child views
     initialize: function(options) {
       this.listenTo(this.model, 'change', this.render);
-      this.child.on('invalid', this.markAsInvalid, this);
+      this.listenTo(this.child, 'invalid', this.markAsInvalid, this);
+      this.parent.on('reset', this.clearInvalid, this);
     }
     <% } %>
   });
